@@ -21,8 +21,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd
-todo-app-reactjs-patikadev
+  cd todo-app-reactjs-patikadev
 ```
 
 Install required packages
@@ -37,6 +36,6 @@ Run the server
   npm run start
 ```
 
-## Ekran Görüntüleri
+## Screenshots
 
 ![Uygulama Ekran Görüntüsü](./src/img/01.png)
