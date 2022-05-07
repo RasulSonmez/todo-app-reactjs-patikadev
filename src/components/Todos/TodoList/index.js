@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoList({ todo, checkedTodo, removeTodo, activeCategory }) {
+function TodoList({ date, todo, checkedTodo, removeTodo, filteredTodo }) {
   //to check the listed todos
   const handleCheckbox = (itemIndex) => {
     checkedTodo(
@@ -23,26 +23,24 @@ function TodoList({ todo, checkedTodo, removeTodo, activeCategory }) {
         <label htmlFor="toggle-all">Mark all as complete</label>
 
         <ul className="todo-list">
-          {todo.map((todo, id) =>
-            activeCategory == "All" ||
-            (activeCategory == "Active" && todo.complate == false) ||
-            (activeCategory == "Completed" && todo.complate == true) ? (
-              <li key={todo.id} className={todo.isCompleted ? "completed" : ""}>
-                <div className="view">
-                  <input
-                    className="toggle"
-                    onChange={() => handleCheckbox(id)}
-                    type="checkbox"
-                  />
-                  <label>{todo.todo}</label>
-                  <button
-                    onClick={() => removeItem(todo.id)}
-                    className="destroy"
-                  ></button>
-                </div>
-              </li>
-            ) : null
-          )}
+          {filteredTodo.map((todo, id) => (
+            <li key={todo.id} className={todo.isCompleted ? "completed" : ""}>
+              <div className="view">
+                <input
+                  className="toggle"
+                  onChange={() => handleCheckbox(id)}
+                  type="checkbox"
+                />
+                <label>
+                  {todo.todo} <span className="itemDate">{date}</span>
+                </label>
+                <button
+                  onClick={() => removeItem(todo.id)}
+                  className="destroy"
+                ></button>
+              </div>
+            </li>
+          ))}
         </ul>
       </section>
     </div>
