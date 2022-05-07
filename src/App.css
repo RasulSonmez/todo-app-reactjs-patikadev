@@ -119,6 +119,7 @@ body {
 	position: absolute;
 	right: 100%;
 	bottom: 100%;
+
 }
 
 .toggle-all + label {
@@ -130,6 +131,7 @@ body {
 	left: -13px;
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
+	cursor: pointer;
 }
 
 .toggle-all + label:before {

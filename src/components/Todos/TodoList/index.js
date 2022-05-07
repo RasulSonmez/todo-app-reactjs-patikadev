@@ -16,11 +16,40 @@ function TodoList({ date, todo, checkedTodo, removeTodo, filteredTodo }) {
   const removeItem = (itemId) =>
     removeTodo(todo.filter((item) => item.id !== itemId));
 
+  const allTodoCompleted = () => {
+    if (todo.every((item) => item.isCompleted)) {
+      checkedTodo(
+        todo.map((item) => {
+          return { ...item, isCompleted: false };
+        })
+      );
+    } else {
+      checkedTodo(
+        todo.map((item) => {
+          if (item.isCompleted !== true) {
+            return { ...item, isCompleted: true };
+          }
+          return { ...item };
+        })
+      );
+    }
+  };
+
   return (
     <div>
       <section className="main">
-        <input className="toggle-all" type="checkbox" />
-        <label htmlFor="toggle-all">Mark all as complete</label>
+        <input
+          onChange={() => allTodoCompleted()}
+          id="toggle-all"
+          className="toggle-all"
+          type="checkbox"
+        />
+        <label
+          htmlFor="toggle-all"
+          className={todo.length === 0 ? "hidden" : "show"}
+        >
+          Mark all as complete
+        </label>
 
         <ul className="todo-list">
           {filteredTodo.map((todo, id) => (
@@ -28,6 +57,7 @@ function TodoList({ date, todo, checkedTodo, removeTodo, filteredTodo }) {
               <div className="view">
                 <input
                   className="toggle"
+                  checked={todo.isCompleted}
                   onChange={() => handleCheckbox(id)}
                   type="checkbox"
                 />
