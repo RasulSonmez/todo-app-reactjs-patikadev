@@ -39,4 +39,4 @@ Run the server
 
 ## Ekran Görüntüleri
 
-![Uygulama Ekran Görüntüsü](./src/img/01.PNG)
+![Uygulama Ekran Görüntüsü](./src/img/01.png)
