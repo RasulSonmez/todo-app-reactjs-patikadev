@@ -8,6 +8,8 @@ function Todos() {
   const [filterType, setFilterType] = useState("All");
   const [filteredTodo, setFilteredTodo] = useState(todo);
   const [date, setDate] = useState(null);
+  const [editId, setEdit] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   //filtered todo statu
   useEffect(() => {
@@ -31,6 +33,21 @@ function Todos() {
     setDate(date);
   }, []);
 
+  const editTodo = (id, text) => {
+    let editTodos = todo.map((todo) => {
+      if (todo.id === id) {
+        todo.todo = text;
+      }
+      return todo;
+    });
+    setTodo(editTodos);
+    setEdit(false);
+  };
+
+  const handleEditChange = (id, text) => {
+    setEdit(id);
+    setInputValue(text);
+  };
   return (
     <div>
       <section className="todoapp">
@@ -45,6 +62,11 @@ function Todos() {
           checkedTodo={setTodo}
           removeTodo={setTodo}
           filteredTodo={filteredTodo}
+          editTodo={editTodo}
+          editId={editId}
+          handleEditChange={handleEditChange}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
         />
         <Status
           todo={todo}

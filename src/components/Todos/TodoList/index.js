@@ -1,6 +1,15 @@
-import React from "react";
-
-function TodoList({ date, todo, checkedTodo, removeTodo, filteredTodo }) {
+function TodoList({
+  date,
+  todo,
+  checkedTodo,
+  removeTodo,
+  filteredTodo,
+  editTodo,
+  editId,
+  handleEditChange,
+  inputValue,
+  setInputValue,
+}) {
   //to check the listed todos
   const handleCheckbox = (itemIndex) => {
     checkedTodo(
@@ -61,13 +70,42 @@ function TodoList({ date, todo, checkedTodo, removeTodo, filteredTodo }) {
                   onChange={() => handleCheckbox(id)}
                   type="checkbox"
                 />
-                <label>
-                  {todo.todo} <span className="itemDate">{date}</span>
-                </label>
-                <button
-                  onClick={() => removeItem(todo.id)}
-                  className="destroy"
-                ></button>
+
+                {editId === todo.id ? (
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                  />
+                ) : (
+                  <>
+                    <label>{todo.todo}</label>
+                    <label className="itemDate">{date}</label>
+                  </>
+                )}
+                {editId === todo.id ? (
+                  <>
+                    <button
+                      className="edit1"
+                      onClick={() => editTodo(todo.id, inputValue)}
+                    >
+                      Edit todo
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="edit1"
+                      onClick={() => handleEditChange(todo.id, todo.todo)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => removeItem(todo.id)}
+                      className="destroy"
+                    ></button>
+                  </>
+                )}
               </div>
             </li>
           ))}
