@@ -4,11 +4,12 @@ This project is the 2nd assignment in the fronted path react lessons on the [pat
 
 ## Features
 
-- Adding a new task
-- Task completion
-- Delete a task
-- Clear all tasks
-- Task filtering
+- Adding a new todo
+- Edit todo
+- Todo completion
+- Delete a Todo
+- Clear all Todos
+- Todos filtering
 
 ## Run it on your computer
 
