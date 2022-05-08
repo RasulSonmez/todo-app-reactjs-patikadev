@@ -73,6 +73,7 @@ function TodoList({
 
                 {editId === todo.id ? (
                   <input
+                    className="edit-input"
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}

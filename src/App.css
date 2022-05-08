@@ -453,3 +453,10 @@ meta,
 	color: #fff;
 	cursor: pointer;
 }
+
+.edit-input{
+	height: 30px;
+    padding-left: 1rem;
+    border: 1px solid #03a9f466;
+    margin: 1rem;
+}
